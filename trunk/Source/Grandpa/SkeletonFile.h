@@ -1,0 +1,90 @@
+#ifndef __GRP_SKELETON_FILE_H__
+#define __GRP_SKELETON_FILE_H__
+
+#include "ContentFile.h"
+#include <string>
+#include <vector>
+#include <map>
+
+namespace grp
+{
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+struct CoreBone
+{
+	STRING		name;
+	STRING		property;
+	int			parentId;
+	VECTOR(int)	childrenId;
+	Vector3		position;
+	Quaternion	rotation;
+	Vector3		scale;
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+class SkeletonFile : public ContentFile
+{
+	friend class CExporter;
+
+public:
+	CoreBone* getCoreBone(int id);
+	CoreBone* getCoreBone(const STRING& name);
+
+	int getBoneId(const STRING& name) const;
+
+	const VECTOR(CoreBone)& getCoreBones() const;
+
+	bool importFrom(std::istream& input);
+
+private:
+	void clear();
+
+	int addCoreBone(const CoreBone& bone);
+
+private:
+	VECTOR(CoreBone)	m_coreBones;
+	MAP(STRING, int)	m_boneNameMap;
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+inline CoreBone* SkeletonFile::getCoreBone(int id)
+{
+	if (id < 0 || id >= static_cast<int>(m_coreBones.size()))
+	{
+		return NULL;
+	}
+	return &(m_coreBones[id]);
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+inline CoreBone* SkeletonFile::getCoreBone(const STRING& name)
+{
+	MAP(STRING, int)::const_iterator found = m_boneNameMap.find(name);
+	if (found == m_boneNameMap.end())
+	{
+		return NULL;
+	}
+	return getCoreBone((*found).second);
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+inline int SkeletonFile::getBoneId(const STRING& name) const
+{
+	MAP(STRING, int)::const_iterator found;
+	found = m_boneNameMap.find(name);
+	if (found == m_boneNameMap.end())
+	{
+		return -1;
+	}
+	return (*found).second;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+inline const VECTOR(CoreBone)& SkeletonFile::getCoreBones() const
+{
+	return m_coreBones;
+}
+
+}
+
+#endif

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Grandpa">
+      <UniqueIdentifier>{ec2bdcb9-ae97-4202-84d7-b1dc51bb0912}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\Gred.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\Gred.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Gred.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Grandpa\PathUtil.cpp">
+      <Filter>Grandpa</Filter>
+    </ClCompile>
+    <ClCompile Include="Gred.cpp" />
+    <ClCompile Include="GredCommon.cpp" />
+    <ClCompile Include="GredDlg.cpp" />
+    <ClCompile Include="GredModel.cpp" />
+    <ClCompile Include="Precompiled.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Grandpa\PathUtil.h">
+      <Filter>Grandpa</Filter>
+    </ClInclude>
+    <ClInclude Include="Gred.h" />
+    <ClInclude Include="GredCommon.h" />
+    <ClInclude Include="GredDlg.h" />
+    <ClInclude Include="GredModel.h" />
+    <ClInclude Include="Precompiled.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="stdafx.h" />
+  </ItemGroup>
+</Project>

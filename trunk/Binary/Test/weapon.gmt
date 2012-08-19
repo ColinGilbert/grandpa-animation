@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encode="UTF-8"?>
+<material type="normalmap" cullMode="ccw" zFunc="lessequal" color="0,0,0,0" param1="0.0" param2="0.0" fog="true" zWrite="true" wireframe="false">
+	<texture filename="diffuse_w.dds" texAddress="wrap" linearFilter="true" mipmap="true" matrix="1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1"/>
+	<texture filename="normal_w.jpg" texAddress="wrap" linearFilter="true" mipmap="true" matrix="1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1"/>
+	<texture filename="gloss_w.jpg" texAddress="wrap" linearFilter="true" mipmap="true" matrix="1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1"/>
+	<property surface="wood"/>
+</material>

@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="DefaultAllocator.cpp" />
+    <ClCompile Include="DefaultFileLoader.cpp" />
+    <ClCompile Include="DefaultResourceManager.cpp" />
+    <ClCompile Include="Grandpa.cpp" />
+    <ClCompile Include="Model.cpp" />
+    <ClCompile Include="Part.cpp" />
+    <ClCompile Include="Precompiled.cpp" />
+    <ClCompile Include="Animation.cpp">
+      <Filter>Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="IkSolver.cpp">
+      <Filter>Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="LinearSampler.cpp">
+      <Filter>Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="SplineSampler.cpp">
+      <Filter>Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="StepSampler.cpp">
+      <Filter>Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="Skeleton.cpp">
+      <Filter>Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshFile.cpp">
+      <Filter>ContentFile</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationFile.cpp">
+      <Filter>ContentFile</Filter>
+    </ClCompile>
+    <ClCompile Include="SkinnedMeshFile.cpp">
+      <Filter>ContentFile</Filter>
+    </ClCompile>
+    <ClCompile Include="RigidMeshFile.cpp">
+      <Filter>ContentFile</Filter>
+    </ClCompile>
+    <ClCompile Include="SkeletonFile.cpp">
+      <Filter>ContentFile</Filter>
+    </ClCompile>
+    <ClCompile Include="ChunkFileIo.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
+    <ClCompile Include="PathUtil.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
+    <ClCompile Include="Bsp.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Core.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelResource.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="PartResource.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="MaterialResource.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceFactory.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="Resource.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="SkinnedMesh.cpp">
+      <Filter>Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="RigidMesh.cpp">
+      <Filter>Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="Spline.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DefaultAllocator.h" />
+    <ClInclude Include="DefaultFileLoader.h" />
+    <ClInclude Include="DefaultResourceManager.h" />
+    <ClInclude Include="Model.h" />
+    <ClInclude Include="Precompiled.h" />
+    <ClInclude Include="Property.h" />
+    <ClInclude Include="ReferenceCounted.h" />
+    <ClInclude Include="ResourceInstance.h" />
+    <ClInclude Include="StlAllocator.h" />
+    <ClInclude Include="Animation.h">
+      <Filter>Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationSampler.h">
+      <Filter>Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="LinearSampler.h">
+      <Filter>Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="SplineSampler.h">
+      <Filter>Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="StepSampler.h">
+      <Filter>Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Skeleton.h">
+      <Filter>Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshFile.h">
+      <Filter>ContentFile</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationFile.h">
+      <Filter>ContentFile</Filter>
+    </ClInclude>
+    <ClInclude Include="SkinnedMeshFile.h">
+      <Filter>ContentFile</Filter>
+    </ClInclude>
+    <ClInclude Include="RigidMeshFile.h">
+      <Filter>ContentFile</Filter>
+    </ClInclude>
+    <ClInclude Include="SkeletonFile.h">
+      <Filter>ContentFile</Filter>
+    </ClInclude>
+    <ClInclude Include="ContentFile.h">
+      <Filter>ContentFile</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\IAllocator.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\IAnimation.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\IEventHandler.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\IFileLoader.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\ILogger.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\IMaterial.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\IMesh.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\IModel.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\IPart.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\IProperty.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\IResource.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\IResourceManager.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\ISkeleton.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\ISkin.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\Grandpa.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\Define.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="ChunkFileIo.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="PathUtil.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\Matrix.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\Vector.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Spline.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Bsp.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Bezier.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\AaBox.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Core.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\Line.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\Quaternion.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelResource.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="PartResource.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="MaterialResource.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceFactory.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="ContentResource.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="SkinnedMesh.h">
+      <Filter>Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="RigidMesh.h">
+      <Filter>Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="StandaloneRigidMesh.h">
+      <Filter>Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="Part.h" />
+    <ClInclude Include="IkSolver.h">
+      <Filter>Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h" />
+    <ClInclude Include="..\..\Include\ISpline.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="SplineFunctions.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\Plane.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\Triangle.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Include\Frustum.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Animation">
+      <UniqueIdentifier>{01746186-3d73-4c55-a5b3-b73ca7a87685}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ContentFile">
+      <UniqueIdentifier>{ee5c0893-87fe-4b97-84a0-0aa9f1c0d7d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IO">
+      <UniqueIdentifier>{64b86835-937f-40e4-b94a-8ebceb9523b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{e7817b61-dcee-4e1e-a7e6-8531ff7f5f03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math">
+      <UniqueIdentifier>{c92a8935-6783-4460-956d-4b8e65bf9a3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mesh">
+      <UniqueIdentifier>{6cd5ffb2-dc9f-4007-99f4-e0c988d3f83d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface">
+      <UniqueIdentifier>{dc35cdfb-6f55-411c-a9b5-a8b9c1e00d99}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
