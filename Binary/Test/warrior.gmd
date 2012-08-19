@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<model skeleton="warrior.gsk">
+	<part slot="body" mesh="body.gms" type="skinned">
+		<material type="normalmap">
+			<texture filename="diffuse.dds"/>
+			<texture filename="normal.jpg"/>
+			<texture filename="gloss.jpg"/>
+		</material>
+		<property body="true"/>
+	</part>
+	<part slot="weapon" filename="weapon.gpt"/>
+	<animation slot="stand" filename="stand.gan"/>
+	<animation slot="fight" filename="fight.gan" preload="true">
+		<event name="collision" time="0.5">
+			<param range="3.5"/>
+		</event>
+	</animation>
+	<animation slot="walk" filename="walk.gan" preload="true"/>
+	<animation slot="run" filename="run.gan" preload="true"/>
+	<animation slot="attack" filename="attack.gan">
+		<event name="sound" type="start">
+			<param file="攻击.wav"/>
+		</event>
+		<event name="animation" type="end">
+			<param slot="attack2"/>
+		</event>
+	</animation>
+	<animation slot="attack_clip" filename="attack.gan" start="0.3" end="0.7"/>
+	<animation slot="attack_up" filename="attack_up.gan"/>
+	<property effect="default.eff"/>
+</model>

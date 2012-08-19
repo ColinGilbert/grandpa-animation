@@ -1,0 +1,246 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// 中文(中华人民共和国) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\PerfSpy.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""l.chs\\afxres.rc""          // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\PerfSpy.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 237, 29
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "关于 PerfSpy"
+FONT 9, "宋体", 0, 0, 0x0
+BEGIN
+    LTEXT           "PerfSpy",IDC_STATIC,43,10,53,8,SS_NOPREFIX
+    DEFPUSHBUTTON   "确定",IDOK,180,7,50,14,WS_GROUP
+END
+
+IDD_PERFSPY_DIALOG DIALOGEX 0, 0, 499, 417
+STYLE DS_SETFONT | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_POPUP | WS_VISIBLE | 
+    WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "PerfSpy"
+FONT 9, "宋体", 0, 0, 0x1
+BEGIN
+    PUSHBUTTON      "退出",IDCANCEL,442,396,50,14
+    CONTROL         "List1",IDC_LIST_PROFILE,"SysListView32",LVS_REPORT | 
+                    LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,21,255,471,133
+    PUSHBUTTON      "打开...",IDC_BUTTON_OPEN,385,396,50,14
+    CONTROL         "",IDC_STATIC_GRAPH,"Static",SS_BLACKFRAME,7,7,485,122
+    CONTROL         "Slider1",IDC_SLIDER_PROGRESS,"msctls_trackbar32",
+                    TBS_BOTH | TBS_NOTICKS | WS_TABSTOP,7,148,148,15
+    EDITTEXT        IDC_EDIT_FRAMEINDEX,106,190,32,12,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+    LTEXT           "当前第",IDC_STATIC,77,192,25,8
+    LTEXT           "帧",IDC_STATIC,140,192,9,8
+    PUSHBUTTON      "<",IDC_BUTTON_PREV,13,207,26,13
+    PUSHBUTTON      ">",IDC_BUTTON_NEXT,46,207,26,13
+    GROUPBOX        "进度",IDC_STATIC,7,135,148,112
+    EDITTEXT        IDC_EDIT_TOTALDATAFRAME,106,207,32,12,ES_AUTOHSCROLL | 
+                    ES_READONLY | ES_NUMBER
+    LTEXT           "共",IDC_STATIC,93,209,9,8
+    LTEXT           "帧",IDC_STATIC,140,209,9,8
+    CONTROL         "List1",IDC_LIST_USERDATA,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_SHOWSELALWAYS | WS_BORDER | 
+                    WS_TABSTOP,290,137,202,110
+    CONTROL         "",IDC_STATIC_COLORHINT,"Static",SS_BLACKFRAME,7,255,9,
+                    133
+    CONTROL         "显示总和",IDC_CHECK_SHOWTOTAL,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,170,210,48,10
+    PUSHBUTTON      ">>",IDC_BUTTON_NEXTPAGE,46,189,26,13
+    PUSHBUTTON      "<<",IDC_BUTTON_PREVPAGE,13,189,26,13
+    PUSHBUTTON      "最大耗时",IDC_BUTTON_MAXTIME,13,225,59,14
+    PUSHBUTTON      "最小耗时",IDC_BUTTON_MINTIME,86,225,59,14
+    PUSHBUTTON      "最大值",IDC_BUTTON_USERMAX,268,137,16,50,BS_MULTILINE
+    PUSHBUTTON      "最小值",IDC_BUTTON_USERMIN,268,197,16,50,BS_MULTILINE
+    EDITTEXT        IDC_EDIT_SCALE,205,147,17,12,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "比例:",IDC_STATIC,175,149,21,8
+    LTEXT           "倍",IDC_STATIC,226,149,9,8
+    EDITTEXT        IDC_EDIT_BEGIN,178,227,32,12,ES_AUTOHSCROLL | ES_NUMBER | 
+                    WS_DISABLED
+    EDITTEXT        IDC_EDIT_END,222,227,32,12,ES_AUTOHSCROLL | ES_NUMBER | 
+                    WS_DISABLED
+    PUSHBUTTON      "刷新",IDC_BUTTON_REFRESH,222,208,32,14,WS_DISABLED
+    GROUPBOX        "区间统计",IDC_STATIC,162,196,100,51
+    LTEXT           "自",IDC_STATIC_FROM,169,229,9,8,WS_DISABLED
+    LTEXT           "至",IDC_STATIC_TO,211,229,9,8,WS_DISABLED
+    LTEXT           "时间",IDC_STATIC,20,171,17,8
+    EDITTEXT        IDC_EDIT_TIME,42,169,107,12,ES_AUTOHSCROLL | ES_READONLY
+    CONTROL         "总耗时",IDC_RADIO_TIME,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP,205,163,40,10
+    CONTROL         "每帧耗时",IDC_RADIO_TIME_PER_FR,"Button",
+                    BS_AUTORADIOBUTTON,205,175,48,10
+    LTEXT           "显示:",IDC_STATIC,175,163,21,8
+    GROUPBOX        "图表",IDC_STATIC,162,135,100,56
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404B0"
+        BEGIN
+            VALUE "FileDescription", "PerfSpy Microsoft 基础类应用程序"
+            VALUE "FileVersion", "1, 0, 0, 1"
+            VALUE "InternalName", "PerfSpy"
+            VALUE "LegalCopyright", "版权所有 (C) 2004"
+            VALUE "OriginalFilename", "PerfSpy.EXE"
+            VALUE "ProductName", "PerfSpy 应用程序"
+            VALUE "ProductVersion", "1, 0, 0, 1"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 230
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 22
+    END
+
+    IDD_PERFSPY_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 492
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 410
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_ABOUTBOX            "关于 PerfSpy(&A)..."
+END
+
+#endif    // 中文(中华人民共和国) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE 4, 2
+#pragma code_page(936)
+#endif //_WIN32
+#include "res\PerfSpy.rc2"  // non-Microsoft Visual C++ edited resources
+#include "l.chs\afxres.rc"          // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

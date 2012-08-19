@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encode="UTF-8"?>
+<part mesh="weapon.gms" type="skinned">
+	<material filename="weapon.gmt"/>
+	<property effect="weapon.eff"/>
+	<property effect_pos="0,0,0"/>
+</part>

@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\Grandpa\ChunkFileIo.cpp" />
+    <ClCompile Include="..\Grandpa\Core.cpp" />
+    <ClCompile Include="DllEntry.cpp" />
+    <ClCompile Include="Exporter.cpp" />
+    <ClCompile Include="Exporter_Mesh.cpp" />
+    <ClCompile Include="GrandpaExport.cpp" />
+    <ClCompile Include="LodGenerator.cpp" />
+    <ClCompile Include="MathConversion.cpp" />
+    <ClCompile Include="OptionDlg.cpp" />
+    <ClCompile Include="Precompiled.cpp" />
+    <ClCompile Include="..\Exporter\AnimationExporter.cpp">
+      <Filter>Exporter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Exporter\RigidMeshExporter.cpp">
+      <Filter>Exporter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Exporter\SkeletonExporter.cpp">
+      <Filter>Exporter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Exporter\SkinnedMeshExporter.cpp">
+      <Filter>Exporter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Exporter\MeshExporter.cpp">
+      <Filter>Exporter</Filter>
+    </ClCompile>
+    <ClCompile Include="Exporter_Material.cpp">
+      <Filter>Exporter</Filter>
+    </ClCompile>
+    <ClCompile Include="Exporter_Part.cpp">
+      <Filter>Exporter</Filter>
+    </ClCompile>
+    <ClCompile Include="Exporter_Model.cpp">
+      <Filter>Exporter</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Grandpa\ChunkFileIo.h" />
+    <ClInclude Include="Exporter.h" />
+    <ClInclude Include="GrandpaExport.h" />
+    <ClInclude Include="LodGenerator.h" />
+    <ClInclude Include="MathConversion.h" />
+    <ClInclude Include="OptionDlg.h" />
+    <ClInclude Include="Precompiled.h" />
+    <ClInclude Include="Resource.h" />
+    <ClInclude Include="..\Exporter\AnimationExporter.h">
+      <Filter>Exporter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Exporter\RigidMeshExporter.h">
+      <Filter>Exporter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Exporter\SkeletonExporter.h">
+      <Filter>Exporter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Exporter\SkinnedMeshExporter.h">
+      <Filter>Exporter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Exporter\MeshExporter.h">
+      <Filter>Exporter</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="SkeletonExp.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\bitmap1.bmp" />
+    <None Include="res\bitmap2.bmp" />
+    <None Include="res\bitmap3.bmp" />
+    <None Include="GrandpaExport.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Exporter">
+      <UniqueIdentifier>{9e4b6ae6-94f8-440d-9af5-83ee0d1b1870}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
