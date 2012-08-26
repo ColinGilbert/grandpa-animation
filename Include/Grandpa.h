@@ -58,7 +58,7 @@ GRANDPA_API IMaterial* createMaterial(IResource* resource);
 GRANDPA_API IMaterial* createMaterial(const Char* url, void* param0 = NULL, void* param1 = NULL);
 GRANDPA_API void destroyMaterial(IMaterial* material);
 
-//support spline of float, Vector2, Vector3, Vector4, Quaternino, Euler
+//support spline of float, Vector2, Vector3, Vector4, Quaternino and Euler
 template<typename T>
 GRANDPA_API ISpline<T>* createSpline();
 template<typename T>
