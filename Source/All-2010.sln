@@ -75,7 +75,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Kinect", "Demo\Kinect\Kinec
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Common", "Demo\Common\Common.vcxproj", "{F0F1EB26-0F64-4657-8BE9-37AE14F6DFD2}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SlimXml", "..\..\slimxml\SlimXml\SlimXml.vcxproj", "{1201FB93-5F9A-48BC-8E32-5420881715A7}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SlimXml", "SlimXml\SlimXml\SlimXml.vcxproj", "{1201FB93-5F9A-48BC-8E32-5420881715A7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

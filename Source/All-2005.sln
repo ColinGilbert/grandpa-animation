@@ -87,7 +87,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Crowd", "Demo\Crowd\CrowdDe
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Common", "Demo\Common\Common.vcproj", "{1A587B54-F300-44D3-B2B1-24BB8141DCB8}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SlimXml", "..\..\SlimXml\SlimXml\SlimXml.vcproj", "{1201FB93-5F9A-48BC-8E32-5420881715A7}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SlimXml", "SlimXml\SlimXml\SlimXml.vcproj", "{1201FB93-5F9A-48BC-8E32-5420881715A7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
