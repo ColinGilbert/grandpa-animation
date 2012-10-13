@@ -98,7 +98,7 @@ void Resource::readPropertyFromNode(slim::XmlNode* node, VECTOR(PropertyPair)& p
 		pairs.resize(pairs.size() + 1);
 		PropertyPair& pair = pairs.back();
 		pair.name = attribute->getName();
-		pair.value = attribute->getString();
+		pair.value = attribute->getValue<const Char*>();
 	}
 }
 

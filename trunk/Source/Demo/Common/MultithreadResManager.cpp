@@ -3,6 +3,7 @@
 #include "DemoTexture.h"
 #include "Windows.h"
 #include <cassert>
+#include "float.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 MultithreadResManager::MultithreadResManager(grp::IFileLoader* fileLoader)

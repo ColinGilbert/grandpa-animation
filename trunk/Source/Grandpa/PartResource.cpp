@@ -126,7 +126,7 @@ void PartResource::readMesh(slim::XmlNode* node, void* param0, void* param1, con
 	}
 	ResourceType resType;
 	slim::XmlAttribute* typeAttr = node->findAttribute(GT("type"));
-	if (typeAttr != NULL && Strcmp(typeAttr->getString(), GT("skinned")) == 0)
+	if (typeAttr != NULL && Strcmp(typeAttr->getValue<const Char*>(), GT("skinned")) == 0)
 	{
 		resType = RES_TYPE_SKINNED_MESH;
 	}
@@ -134,7 +134,7 @@ void PartResource::readMesh(slim::XmlNode* node, void* param0, void* param1, con
 	{
 		resType = RES_TYPE_RIGID_MESH;
 	}
-	IResource* resource = grabChildResource(resType, filenameAttr->getString(), param0, param1);
+	IResource* resource = grabChildResource(resType, filenameAttr->getValue<const Char*>(), param0, param1);
 	m_meshResource = static_cast<Resource*>(resource);
 }
 
@@ -157,7 +157,7 @@ void PartResource::readMaterial(slim::XmlNode* node, void* param0, void* param1)
 	}
 	else
 	{
-		resource = grabChildResource(RES_TYPE_MATERIAL, filenameAttr->getString(), param0, param1);
+		resource = grabChildResource(RES_TYPE_MATERIAL, filenameAttr->getValue<const Char*>(), param0, param1);
 	}
 	m_materialResources.push_back(static_cast<MaterialResource*>(resource));
 }
