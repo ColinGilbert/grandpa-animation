@@ -1,0 +1,219 @@
+<?xml version='1.0' encoding='utf-8'?>
+<project version='8' encrypted='1'>
+	<steps type='0'>
+		<step action='Group'>
+			<buildfailsteps type='11'>0</buildfailsteps>
+			<name>Project steps</name>
+		</step>
+		<step action='Make VS 2010'>
+			<Attr type='11'>-1</Attr>
+			<FileVer type='11'>-1</FileVer>
+			<Filename>%WORK_ROOT%\Source\All-2010.sln</Filename>
+			<Force type='3'>2</Force>
+			<buildfailsteps type='11'>0</buildfailsteps>
+			<indent type='3'>1</indent>
+			<name>2010 Cleanup</name>
+		</step>
+		<step action='Make VS 2010'>
+			<Attr type='11'>-1</Attr>
+			<Config>Debug|Win32</Config>
+			<FileVer type='11'>-1</FileVer>
+			<Filename>%WORK_ROOT%\Source\All-2010.sln</Filename>
+			<buildfailsteps type='11'>0</buildfailsteps>
+			<indent type='3'>1</indent>
+			<name>2010 Debug</name>
+		</step>
+		<step action='Make VS 2010'>
+			<Attr type='11'>-1</Attr>
+			<Config>Release|Win32</Config>
+			<FileVer type='11'>-1</FileVer>
+			<Filename>%WORK_ROOT%\Source\All-2010.sln</Filename>
+			<buildfailsteps type='11'>0</buildfailsteps>
+			<indent type='3'>1</indent>
+			<name>2010 Release</name>
+		</step>
+		<step action='Make VS 2010'>
+			<Attr type='11'>-1</Attr>
+			<Config>Release_profile|Win32</Config>
+			<FileVer type='11'>-1</FileVer>
+			<Filename>%WORK_ROOT%\Source\All-2010.sln</Filename>
+			<buildfailsteps type='11'>0</buildfailsteps>
+			<indent type='3'>1</indent>
+			<name>2010 Release_profile</name>
+		</step>
+		<step action='Make VS 2010'>
+			<Attr type='11'>-1</Attr>
+			<Config>Debug_Max8|Win32</Config>
+			<FileVer type='11'>-1</FileVer>
+			<Filename>%WORK_ROOT%\Source\All-2010.sln</Filename>
+			<buildfailsteps type='11'>0</buildfailsteps>
+			<indent type='3'>1</indent>
+			<name>2010 Max8 Exporter Debug</name>
+		</step>
+		<step action='Make VS 2010'>
+			<Attr type='11'>-1</Attr>
+			<Config>Release_Max8|Win32</Config>
+			<FileVer type='11'>-1</FileVer>
+			<Filename>%WORK_ROOT%\Source\All-2010.sln</Filename>
+			<buildfailsteps type='11'>0</buildfailsteps>
+			<indent type='3'>1</indent>
+			<name>2010 Max8 Exporter Release</name>
+		</step>
+		<step action='Make VS 2010'>
+			<Attr type='11'>-1</Attr>
+			<Config>Debug_Max9|Win32</Config>
+			<FileVer type='11'>-1</FileVer>
+			<Filename>%WORK_ROOT%\Source\All-2010.sln</Filename>
+			<buildfailsteps type='11'>0</buildfailsteps>
+			<indent type='3'>1</indent>
+			<name>2010 Max9 Exporter Debug</name>
+		</step>
+		<step action='Make VS 2010'>
+			<Attr type='11'>-1</Attr>
+			<Config>Release_Max9|Win32</Config>
+			<FileVer type='11'>-1</FileVer>
+			<Filename>%WORK_ROOT%\Source\All-2010.sln</Filename>
+			<buildfailsteps type='11'>0</buildfailsteps>
+			<indent type='3'>1</indent>
+			<name>2010 Max9 Exporter Release</name>
+		</step>
+		<step action='Make VS 2010'>
+			<Attr type='11'>-1</Attr>
+			<Config>Debug_Max09|Win32</Config>
+			<FileVer type='11'>-1</FileVer>
+			<Filename>%WORK_ROOT%\Source\All-2010.sln</Filename>
+			<buildfailsteps type='11'>0</buildfailsteps>
+			<indent type='3'>1</indent>
+			<name>2010 Max2009 Exporter Debug</name>
+		</step>
+		<step action='Make VS 2010'>
+			<Attr type='11'>-1</Attr>
+			<Config>Release_Max09|Win32</Config>
+			<FileVer type='11'>-1</FileVer>
+			<Filename>%WORK_ROOT%\Source\All-2010.sln</Filename>
+			<buildfailsteps type='11'>0</buildfailsteps>
+			<indent type='3'>1</indent>
+			<name>2010 Max2009 Exporter Release</name>
+		</step>
+		<step action='Make VS 2010'>
+			<Attr type='11'>-1</Attr>
+			<Config>Debug_Max12|Win32</Config>
+			<FileVer type='11'>-1</FileVer>
+			<Filename>%WORK_ROOT%\Source\All-2010.sln</Filename>
+			<buildfailsteps type='11'>0</buildfailsteps>
+			<indent type='3'>1</indent>
+			<name>2010 Max2012 Exporter Debug</name>
+		</step>
+		<step action='Make VS 2010'>
+			<Attr type='11'>-1</Attr>
+			<Config>Release_Max12|Win32</Config>
+			<FileVer type='11'>-1</FileVer>
+			<Filename>%WORK_ROOT%\Source\All-2010.sln</Filename>
+			<buildfailsteps type='11'>0</buildfailsteps>
+			<indent type='3'>1</indent>
+			<name>2010 Max2012 Exporter Release</name>
+		</step>
+		<step action='Make VS 2005'>
+			<Attr type='11'>-1</Attr>
+			<FileVer type='11'>-1</FileVer>
+			<Filename>%WORK_ROOT%\Source\All-2005.sln</Filename>
+			<Force type='3'>2</Force>
+			<buildfailsteps type='11'>0</buildfailsteps>
+			<indent type='3'>1</indent>
+			<name>2005 Cleanup</name>
+		</step>
+		<step action='Make VS 2005'>
+			<Attr type='11'>-1</Attr>
+			<Config>Debug|Win32</Config>
+			<FileVer type='11'>-1</FileVer>
+			<Filename>%WORK_ROOT%\Source\All-2005.sln</Filename>
+			<buildfailsteps type='11'>0</buildfailsteps>
+			<indent type='3'>1</indent>
+			<name>2005 Debug</name>
+		</step>
+		<step action='Make VS 2005'>
+			<Attr type='11'>-1</Attr>
+			<Config>Release|Win32</Config>
+			<FileVer type='11'>-1</FileVer>
+			<Filename>%WORK_ROOT%\Source\All-2005.sln</Filename>
+			<buildfailsteps type='11'>0</buildfailsteps>
+			<indent type='3'>1</indent>
+			<name>2005 Release</name>
+		</step>
+		<step action='Make VS 2005'>
+			<Attr type='11'>-1</Attr>
+			<Config>Debug_Max8|Win32</Config>
+			<FileVer type='11'>-1</FileVer>
+			<Filename>%WORK_ROOT%\Source\All-2005.sln</Filename>
+			<buildfailsteps type='11'>0</buildfailsteps>
+			<indent type='3'>1</indent>
+			<name>2005 Max8 Exporter Debug</name>
+		</step>
+		<step action='Make VS 2005'>
+			<Attr type='11'>-1</Attr>
+			<Config>Release_Max8|Win32</Config>
+			<FileVer type='11'>-1</FileVer>
+			<Filename>%WORK_ROOT%\Source\All-2005.sln</Filename>
+			<buildfailsteps type='11'>0</buildfailsteps>
+			<indent type='3'>1</indent>
+			<name>2005 Max8 Exporter Release</name>
+		</step>
+		<step action='Make VS 2005'>
+			<Attr type='11'>-1</Attr>
+			<Config>Debug_Max9|Win32</Config>
+			<FileVer type='11'>-1</FileVer>
+			<Filename>%WORK_ROOT%\Source\All-2005.sln</Filename>
+			<buildfailsteps type='11'>0</buildfailsteps>
+			<indent type='3'>1</indent>
+			<name>2005 Max9 Exporter Debug</name>
+		</step>
+		<step action='Make VS 2005'>
+			<Attr type='11'>-1</Attr>
+			<Config>Release_Max9|Win32</Config>
+			<FileVer type='11'>-1</FileVer>
+			<Filename>%WORK_ROOT%\Source\All-2005.sln</Filename>
+			<buildfailsteps type='11'>0</buildfailsteps>
+			<indent type='3'>1</indent>
+			<name>2005 Max9 Exporter Release</name>
+		</step>
+		<step action='Make VS 2005'>
+			<Attr type='11'>-1</Attr>
+			<Config>Debug_Max09|Win32</Config>
+			<FileVer type='11'>-1</FileVer>
+			<Filename>%WORK_ROOT%\Source\All-2005.sln</Filename>
+			<buildfailsteps type='11'>0</buildfailsteps>
+			<indent type='3'>1</indent>
+			<name>2005 Max2009 Exporter Debug</name>
+		</step>
+		<step action='Make VS 2005'>
+			<Attr type='11'>-1</Attr>
+			<Config>Release_Max09|Win32</Config>
+			<FileVer type='11'>-1</FileVer>
+			<Filename>%WORK_ROOT%\Source\All-2005.sln</Filename>
+			<buildfailsteps type='11'>0</buildfailsteps>
+			<indent type='3'>1</indent>
+			<name>2005 Max2009 Exporter Release</name>
+		</step>
+		<step action='Make VS 2005'>
+			<Attr type='11'>-1</Attr>
+			<Config>Debug_Max12|Win32</Config>
+			<FileVer type='11'>-1</FileVer>
+			<Filename>%WORK_ROOT%\Source\All-2005.sln</Filename>
+			<buildfailsteps type='11'>0</buildfailsteps>
+			<indent type='3'>1</indent>
+			<name>2005 Max2012 Exporter Debug</name>
+		</step>
+		<step action='Make VS 2005'>
+			<Attr type='11'>-1</Attr>
+			<Config>Release_Max12|Win32</Config>
+			<FileVer type='11'>-1</FileVer>
+			<Filename>%WORK_ROOT%\Source\All-2005.sln</Filename>
+			<buildfailsteps type='11'>0</buildfailsteps>
+			<indent type='3'>1</indent>
+			<name>2005 Max2012 Exporter Release</name>
+		</step></steps>
+	<macros>
+		<macro name='WORK_ROOT'>
+			<value>.\</value>
+		</macro></macros>
+</project>

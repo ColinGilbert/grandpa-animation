@@ -541,7 +541,7 @@ void CGredDlg::readModel()
 	}
 	else
 	{
-		m_skeletonName = skeletonAttribute->getString();
+		m_skeletonName = skeletonAttribute->getValue<const wchar_t*>();
 	}
 	
 	m_partNodes.reserve(m_modelNode->getChildCount(L"part"));
@@ -611,7 +611,7 @@ bool CGredDlg::isSkinnedPart(slim::XmlNode* partNode)
 	slim::XmlAttribute* filenameAttr = partNode->findAttribute(L"filename");
 	if (filenameAttr != NULL)
 	{
-		std::wstring filePath = filenameAttr->getString();
+		std::wstring filePath = filenameAttr->getValue<const wchar_t*>();
 		if (grp::containFolder(m_modelFilename))
 		{
 			std::wstring folder;
@@ -628,7 +628,7 @@ bool CGredDlg::isSkinnedPart(slim::XmlNode* partNode)
 	{
 		return false;
 	}
-	return (wcscmp(partNode->readAttributeAsString(L"type"), L"skinned") == 0);
+	return (wcscmp(partNode->readAttribute<const wchar_t*>(L"type", L""), L"skinned") == 0);
 }
 
 void CGredDlg::refreshPropertyList()
@@ -645,7 +645,7 @@ void CGredDlg::refreshPropertyList()
 			continue;
 		}
 		m_propertyList.InsertItem(index, attribute->getName());
-		m_propertyList.SetItemText(index, 1, attribute->getString());
+		m_propertyList.SetItemText(index, 1, attribute->getValue<const wchar_t*>());
 		++index;
 	}
 }
@@ -656,8 +656,8 @@ void CGredDlg::refreshPartList()
 	for (int i = 0; i < (int)m_partNodes.size(); ++i)
 	{
 		slim::XmlNode* node = m_partNodes[i];
-		m_partList.InsertItem(i, node->readAttributeAsString(L"slot"));
-		const wchar_t* filename = node->readAttributeAsString(L"filename");
+		m_partList.InsertItem(i, node->readAttribute<const wchar_t*>(L"slot", L""));
+		const wchar_t* filename = node->readAttribute<const wchar_t*>(L"filename", L"");
 		//temp, we don't have visible property right now
 		//m_partList.SetItemText(i, 1, L"y");
 		if (filename[0] == 0)
@@ -692,7 +692,7 @@ void CGredDlg::refreshPartPropertyList()
 	slim::XmlAttribute* filenameAttr = partNode->findAttribute(L"filename");
 	if (filenameAttr != NULL)
 	{
-		std::wstring filePath = filenameAttr->getString();
+		std::wstring filePath = filenameAttr->getValue<const wchar_t*>();
 		if (grp::containFolder(m_modelFilename))
 		{
 			std::wstring folder;
@@ -722,7 +722,7 @@ void CGredDlg::refreshPartPropertyList()
 			continue;
 		}
 		m_partPropertyList.InsertItem(index, attribute->getName());
-		m_partPropertyList.SetItemText(index, 1, attribute->getString());
+		m_partPropertyList.SetItemText(index, 1, attribute->getValue<const wchar_t*>());
 		++index;
 	}
 }
@@ -734,9 +734,9 @@ void CGredDlg::refreshAnimationList()
 	{
 		slim::XmlNode* node = m_animationNodes[i];
 		
-		m_animationList.InsertItem(i, node->readAttributeAsString(L"slot"));
+		m_animationList.InsertItem(i, node->readAttribute<const wchar_t*>(L"slot", L""));
 		
-		const wchar_t* filename = node->readAttributeAsString(L"filename");
+		const wchar_t* filename = node->readAttribute<const wchar_t*>(L"filename", L"");
 		m_animationList.SetItemText(i, 1, filename);
 
 		slim::XmlAttribute* startAttribute = node->findAttribute(L"start");
@@ -747,7 +747,7 @@ void CGredDlg::refreshAnimationList()
 		}
 		else
 		{
-			m_animationList.SetItemText(i, 2, startAttribute->getString());
+			m_animationList.SetItemText(i, 2, startAttribute->getValue<const wchar_t*>());
 		}
 		if (endAttribute == NULL)
 		{
@@ -755,7 +755,7 @@ void CGredDlg::refreshAnimationList()
 		}
 		else
 		{
-			m_animationList.SetItemText(i, 3, endAttribute->getString());
+			m_animationList.SetItemText(i, 3, endAttribute->getValue<const wchar_t*>());
 		}
 	}
 }
@@ -781,9 +781,9 @@ void CGredDlg::refreshEventList()
 			continue;
 		}
 		m_eventNodes.push_back(child);
-		m_eventList.InsertItem(eventIndex, child->readAttributeAsString(L"name"));
+		m_eventList.InsertItem(eventIndex, child->readAttribute<const wchar_t*>(L"name", L""));
 		slim::XmlAttribute* typeAttr = child->findAttribute(L"type");
-		if (typeAttr == NULL || Strcmp(typeAttr->getString(), L"time") == 0)
+		if (typeAttr == NULL || Strcmp(typeAttr->getValue<const wchar_t*>(), L"time") == 0)
 		{
 			typeAttr = child->findAttribute(L"time");
 		}
@@ -793,7 +793,7 @@ void CGredDlg::refreshEventList()
 		}
 		else
 		{
-			m_eventList.SetItemText(eventIndex, 1, typeAttr->getString());
+			m_eventList.SetItemText(eventIndex, 1, typeAttr->getValue<const wchar_t*>());
 		}
 		++eventIndex;
 	}
@@ -822,7 +822,7 @@ void CGredDlg::refreshEventParamList()
 		}
 		m_eventParamNodes.push_back(child);
 		m_eventParamList.InsertItem(paramIndex, attribute->getName());
-		m_eventParamList.SetItemText(paramIndex, 1, attribute->getString());
+		m_eventParamList.SetItemText(paramIndex, 1, attribute->getValue<const wchar_t*>());
 		++paramIndex;
 	}
 }
@@ -915,7 +915,7 @@ void CGredDlg::OnNMClickAnimations(NMHDR *pNMHDR, LRESULT *pResult)
 		m_animationNode = m_animationNodes[selected];
 		grp::IModel* model = m_model->getModel();
 		model->stopAllAnimations();
-		const wchar_t* slot = m_animationNode->readAttributeAsString(L"slot");
+		const wchar_t* slot = m_animationNode->readAttribute<const wchar_t*>(L"slot", L"");
 		model->playAnimation(slot, grp::ANIMATION_LOOP);
 	}
 	else
@@ -1210,7 +1210,7 @@ void CGredDlg::OnTimer(UINT_PTR nIDEvent)
 	}
 	if (m_animationNode != NULL && !m_paused)
 	{
-		const wchar_t* slot = m_animationNode->readAttributeAsString(L"slot");
+		const wchar_t* slot = m_animationNode->readAttribute<const wchar_t*>(L"slot", L"");
 		grp::IAnimation* animation = m_model->getModel()->findAnimation(slot);
 		if (animation != NULL)
 		{
@@ -1322,7 +1322,7 @@ void CGredDlg::OnNMReleasedcaptureTimeSlider(NMHDR *pNMHDR, LRESULT *pResult)
 	{
 		return;
 	}
-	const wchar_t* slot = m_animationNode->readAttributeAsString(L"slot");
+	const wchar_t* slot = m_animationNode->readAttribute<const wchar_t*>(L"slot", L"");
 	grp::IAnimation* animation = model->findAnimation(slot);
 	if (animation == NULL)
 	{

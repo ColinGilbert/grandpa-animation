@@ -98,7 +98,7 @@ void ModelResource::importXmlNode(slim::XmlNode* node, void* param0, void* param
 	slim::XmlAttribute* skeletonAttr = node->findAttribute(GT("skeleton"));
 	if (skeletonAttr != NULL)
 	{
-		IResource* resource = grabChildResource(RES_TYPE_SKELETON, skeletonAttr->getString(), param0, param1);
+		IResource* resource = grabChildResource(RES_TYPE_SKELETON, skeletonAttr->getValue<const Char*>(), param0, param1);
 		if (resource != NULL)
 		{
 			m_skeletonResource = static_cast<const SkeletonResource*>(resource);
@@ -157,7 +157,7 @@ void ModelResource::readPartInfo(slim::XmlNode* node)
 	}
 	m_partInfo.resize(m_partInfo.size() + 1);
 	PartInfo& info = m_partInfo.back();
-	info.slot = slotAttr->getString();
+	info.slot = slotAttr->getValue<const Char*>();
 
 	slim::XmlAttribute* filenameAttr = node->findAttribute(GT("filename"));
 	IResource* resource = NULL;
@@ -174,7 +174,7 @@ void ModelResource::readPartInfo(slim::XmlNode* node)
 	}
 	else
 	{
-		resource = grabChildResource(RES_TYPE_PART, filenameAttr->getString(), m_userParam0, m_userParam1);
+		resource = grabChildResource(RES_TYPE_PART, filenameAttr->getValue<const Char*>(), m_userParam0, m_userParam1);
 		info.resource = static_cast<const PartResource*>(resource);
 	}
 }
@@ -190,13 +190,13 @@ void ModelResource::readAnimationInfo(slim::XmlNode* node)
 	{
 		return;
 	}
-	AnimationInfo& info = m_animationInfo[slotAttr->getString()];
-	info.filename = filenameAttr->getString();
-	info.slot = slotAttr->getString();
+	AnimationInfo& info = m_animationInfo[slotAttr->getValue<const Char*>()];
+	info.filename = filenameAttr->getValue<const Char*>();
+	info.slot = slotAttr->getValue<const Char*>();
 	info.resource = NULL;
-	info.startTime = node->readAttributeAsFloat(GT("start"));
-	info.endTime = node->readAttributeAsFloat(GT("end"), 999.0f);
-	if (node->readAttributeAsBool(GT("preload")))
+	info.startTime = node->readAttribute<float>(GT("start"), 0.0f);
+	info.endTime = node->readAttribute<float>(GT("end"), 999.0f);
+	if (node->readAttribute<bool>(GT("preload"), false))
 	{
 		IResource* resource = grabChildResource(RES_TYPE_ANIMATION, info.filename, m_userParam0, m_userParam1);
 		info.resource = static_cast<const AnimationResource*>(resource);
@@ -227,13 +227,13 @@ void ModelResource::readAnimationEvent(slim::XmlNode* node, AnimationInfo& anima
 	}
 	animationInfo.events.resize(animationInfo.events.size() + 1);
 	AnimationEvent& animationEvent = animationInfo.events.back();
-	animationEvent.name = nameAttr->getString();
-	if (Strcmp(typeAttr->getString(), GT("start")) == 0)
+	animationEvent.name = nameAttr->getValue<const Char*>();
+	if (Strcmp(typeAttr->getValue<const Char*>(), GT("start")) == 0)
 	{
 		animationEvent.type = ANIMATION_EVENT_START;
 		animationEvent.time = 0.0f;
 	}
-	else if (Strcmp(typeAttr->getString(), GT("end")) == 0)
+	else if (Strcmp(typeAttr->getValue<const Char*>(), GT("end")) == 0)
 	{
 		animationEvent.type = ANIMATION_EVENT_END;
 		animationEvent.time = 0.0f;
@@ -241,7 +241,7 @@ void ModelResource::readAnimationEvent(slim::XmlNode* node, AnimationInfo& anima
 	else
 	{
 		animationEvent.type = ANIMATION_EVENT_TIME;
-		animationEvent.time = node->readAttributeAsFloat(GT("time"));
+		animationEvent.time = node->readAttribute<float>(GT("time"), 0.0f);
 	}
 
 	//params

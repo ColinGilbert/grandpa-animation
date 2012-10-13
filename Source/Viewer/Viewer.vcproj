@@ -44,7 +44,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="../../Include;../../Source/Grandpa;../../Source/Performance;../Demo/Common;../Demo/tokamak"
+				AdditionalIncludeDirectories="../../Include;../../Source/Grandpa;../../Source/Performance;../Demo/Common;../Demo/tokamak;..\SlimXml\SlimXml"
 				PreprocessorDefinitions="WIN32;_WINDOWS;_DEBUG;_CRT_SECURE_NO_WARNINGS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -69,10 +69,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="Grandpa2005D.lib d3dx9.lib d3d9.lib tokamak.lib CommonD.lib"
+				AdditionalDependencies="Grandpa2005D.lib d3dx9.lib d3d9.lib tokamak.lib CommonD.lib SlimXmlD.lib"
 				OutputFile="$(OutDir)\$(ProjectName)2005D.exe"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="../../Lib;../Demo/tokamak"
+				AdditionalLibraryDirectories="..\..\Lib;..\Demo\tokamak;..\SlimXml\SlimXml\Debug_Unicode"
 				IgnoreAllDefaultLibraries="false"
 				GenerateDebugInformation="true"
 				SubSystem="2"
@@ -132,7 +132,7 @@
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
-				AdditionalIncludeDirectories="../../Include;../../Source/Grandpa;../../Source/Performance;../Demo/Common;../Demo/tokamak"
+				AdditionalIncludeDirectories="../../Include;../../Source/Grandpa;../../Source/Performance;../Demo/Common;../Demo/tokamak;..\SlimXml\SlimXml"
 				PreprocessorDefinitions="WIN32;_WINDOWS;NDEBUG;_CRT_SECURE_NO_WARNINGS"
 				MinimalRebuild="false"
 				RuntimeLibrary="2"
@@ -156,10 +156,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="Grandpa2005.lib d3dx9.lib d3d9.lib tokamak.lib Common.lib"
+				AdditionalDependencies="Grandpa2005.lib d3dx9.lib d3d9.lib tokamak.lib Common.lib SlimXml.lib"
 				OutputFile="$(OutDir)\$(ProjectName)2005.exe"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="../../Lib;../Demo/tokamak"
+				AdditionalLibraryDirectories="..\..\Lib;..\Demo\tokamak;..\SlimXml\SlimXml\Release_Unicode"
 				IgnoreAllDefaultLibraries="false"
 				GenerateDebugInformation="true"
 				SubSystem="2"
@@ -223,14 +223,6 @@
 			</File>
 			<File
 				RelativePath="..\Grandpa\PathUtil.h"
-				>
-			</File>
-			<File
-				RelativePath="..\Grandpa\SlimXml.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\Grandpa\SlimXml.h"
 				>
 			</File>
 		</Filter>
