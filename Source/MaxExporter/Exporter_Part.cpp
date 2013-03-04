@@ -14,7 +14,9 @@
 #include <strsafe.h>
 
 #include "MeshExporter.h"
+#pragma warning(disable : 4995)
 #include "SlimXml.h"
+
 
 bool CExporter::ExportPart()
 {

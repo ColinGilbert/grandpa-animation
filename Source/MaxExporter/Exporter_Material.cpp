@@ -12,8 +12,9 @@
 
 #include <sstream>
 #include <strsafe.h>
-
+#pragma warning(disable : 4995)
 #include "SlimXml.h"
+
 
 bool CExporter::ExportMaterial( const std::wstring& strFilename )
 {
@@ -86,7 +87,7 @@ bool CExporter::writeMaterialFile( Mtl* material, const std::wstring& strFilenam
     //构建xml文档
 
     slim::XmlDocument xmlDoc;
-    slim::XmlNode* modelNode = xmlDoc.addChild( T("material") );
+    slim::XmlNode* modelNode = xmlDoc.addChild( L"material" );
 
     std::string materilaName = material->GetName();
     std::wstring materilaNameW = strtowstr( materilaName );
