@@ -791,200 +791,6 @@ HRESULT WINAPI DXUTInit( bool bParseCommandLine, bool bShowMsgBoxOnError, WCHAR*
 //--------------------------------------------------------------------------------------
 void DXUTParseCommandLine( WCHAR* strCommandLine )
 {
-    WCHAR* strCmdLine;
-    WCHAR strFlag[MAX_PATH];
-
-    int nNumArgs;
-    WCHAR** pstrArgList = CommandLineToArgvW( strCommandLine, &nNumArgs );
-    for( int iArg=1; iArg<nNumArgs; iArg++ )
-    {
-        strCmdLine = pstrArgList[iArg];
-
-        // Handle flag args
-        if( *strCmdLine == L'/' || *strCmdLine == L'-' )
-        {
-            strCmdLine++;
-
-            if( DXUTIsNextArg( strCmdLine, L"forceapi" ) )
-            {
-                if( DXUTGetCmdParam( strCmdLine, strFlag ) )
-                {
-                    int nAPIVersion = _wtoi(strFlag);
-                    GetDXUTState().SetOverrideForceAPI( nAPIVersion );
-                    continue;
-                }
-            }
-
-            if( DXUTIsNextArg( strCmdLine, L"adapter" ) )
-            {
-                if( DXUTGetCmdParam( strCmdLine, strFlag ) )
-                {
-                    int nAdapter = _wtoi(strFlag);
-                    GetDXUTState().SetOverrideAdapterOrdinal( nAdapter );
-                    continue;
-                }
-            }
-
-            if( DXUTIsNextArg( strCmdLine, L"windowed" ) )
-            {
-                GetDXUTState().SetOverrideWindowed( true );
-                continue;
-            }
-
-            if( DXUTIsNextArg( strCmdLine, L"output" ) )
-            {
-                if( DXUTGetCmdParam( strCmdLine, strFlag ) )
-                {
-                    int Output = _wtoi(strFlag);
-                    GetDXUTState().SetOverrideOutput( Output );
-                    continue;
-                }
-            }
-
-            if( DXUTIsNextArg( strCmdLine, L"fullscreen" ) )
-            {
-                GetDXUTState().SetOverrideFullScreen( true );
-                continue;
-            }
-
-            if( DXUTIsNextArg( strCmdLine, L"forcehal" ) )
-            {
-                GetDXUTState().SetOverrideForceHAL( true );
-                continue;
-            }
-
-            if( DXUTIsNextArg( strCmdLine, L"forceref" ) )
-            {
-                GetDXUTState().SetOverrideForceREF( true );
-                continue;
-            }
-
-            if( DXUTIsNextArg( strCmdLine, L"forcepurehwvp" ) )
-            {
-                GetDXUTState().SetOverrideForcePureHWVP( true );
-                continue;
-            }
-
-            if( DXUTIsNextArg( strCmdLine, L"forcehwvp" ) )
-            {
-                GetDXUTState().SetOverrideForceHWVP( true );
-                continue;
-            }
-
-            if( DXUTIsNextArg( strCmdLine, L"forceswvp" ) )
-            {
-                GetDXUTState().SetOverrideForceSWVP( true );
-                continue;
-            }
-
-            if( DXUTIsNextArg( strCmdLine, L"forcevsync" ) )
-            {
-                if( DXUTGetCmdParam( strCmdLine, strFlag ) )
-                {
-                    int nOn = _wtoi(strFlag);
-                    GetDXUTState().SetOverrideForceVsync( nOn );
-                    continue;
-                }
-            }
-
-            if( DXUTIsNextArg( strCmdLine, L"width" ) )
-            {
-                if( DXUTGetCmdParam( strCmdLine, strFlag ) )
-                {
-                    int nWidth = _wtoi(strFlag);
-                    GetDXUTState().SetOverrideWidth( nWidth );
-                    continue;
-                }
-            }
-
-            if( DXUTIsNextArg( strCmdLine, L"height" ) )
-            {
-                if( DXUTGetCmdParam( strCmdLine, strFlag ) )
-                {
-                    int nHeight = _wtoi(strFlag);
-                    GetDXUTState().SetOverrideHeight( nHeight );
-                continue;
-                }
-            }
-
-            if( DXUTIsNextArg( strCmdLine, L"startx" ) )
-            {
-                if( DXUTGetCmdParam( strCmdLine, strFlag ) )
-                {
-                    int nX = _wtoi(strFlag);
-                    GetDXUTState().SetOverrideStartX( nX );
-                    continue;
-                }
-            }
-
-            if( DXUTIsNextArg( strCmdLine, L"starty" ) )
-            {
-                if( DXUTGetCmdParam( strCmdLine, strFlag ) )
-                {
-                    int nY = _wtoi(strFlag);
-                    GetDXUTState().SetOverrideStartY( nY );
-                    continue;
-                }
-            }
-
-            if( DXUTIsNextArg( strCmdLine, L"constantframetime" ) )
-            {
-                float fTimePerFrame;
-                if( DXUTGetCmdParam( strCmdLine, strFlag ) )
-                    fTimePerFrame = (float)wcstod( strFlag, NULL );
-                else
-                    fTimePerFrame = 0.0333f;
-                GetDXUTState().SetOverrideConstantFrameTime( true );
-                GetDXUTState().SetOverrideConstantTimePerFrame( fTimePerFrame );
-                DXUTSetConstantFrameTime( true, fTimePerFrame );
-                continue;
-            }
-
-            if( DXUTIsNextArg( strCmdLine, L"quitafterframe" ) )
-            {
-                if( DXUTGetCmdParam( strCmdLine, strFlag ) )
-                {
-                    int nFrame = _wtoi(strFlag);
-                    GetDXUTState().SetOverrideQuitAfterFrame( nFrame );
-                    continue;
-                }
-            }
-
-            if( DXUTIsNextArg( strCmdLine, L"noerrormsgboxes" ) )
-            {
-                GetDXUTState().SetShowMsgBoxOnError( false );
-                continue;
-            }
-
-            if( DXUTIsNextArg( strCmdLine, L"nostats" ) )
-            {
-                GetDXUTState().SetNoStats( true );
-                continue;
-            }
-
-            if( DXUTIsNextArg( strCmdLine, L"relaunchmce" ) )
-            {
-                GetDXUTState().SetOverrideRelaunchMCE( true );
-                continue;
-            }
-
-            if( DXUTIsNextArg( strCmdLine, L"automation" ) )
-            {
-                GetDXUTState().SetAutomation( true );
-                continue;
-            }
-        }
-
-        // Unrecognized flag
-        StringCchCopy( strFlag, 256, strCmdLine ); 
-        WCHAR* strSpace = strFlag;
-        while (*strSpace && (*strSpace > L' '))
-            strSpace++;
-        *strSpace = 0;
-
-        DXUTOutputDebugString( L"Unrecognized flag: %s", strFlag );
-        strCmdLine += wcslen(strFlag);
-    }
 }
 
 
@@ -1077,8 +883,8 @@ HRESULT WINAPI DXUTCreateWindow( const WCHAR* strWindowTitle, HINSTANCE hInstanc
 
         WCHAR szExePath[MAX_PATH];
         GetModuleFileName( NULL, szExePath, MAX_PATH );
-        if( hIcon == NULL ) // If the icon is NULL, then use the first one found in the exe
-            hIcon = ExtractIcon( hInstance, szExePath, 0 ); 
+        //if( hIcon == NULL ) // If the icon is NULL, then use the first one found in the exe
+        //    hIcon = ExtractIcon( hInstance, szExePath, 0 ); 
 
         // Register the windows class
         WNDCLASS wndClass;
@@ -6019,8 +5825,8 @@ void WINAPI DXUTShutdown( int nExitCode )
     SAFE_RELEASE( pDXGIFactory );
     GetDXUTState().SetDXGIFactory( NULL );
 
-    if( GetDXUTState().GetOverrideRelaunchMCE() )
-        DXUTReLaunchMediaCenter();
+    //if( GetDXUTState().GetOverrideRelaunchMCE() )
+     //   DXUTReLaunchMediaCenter();
 }
 
 

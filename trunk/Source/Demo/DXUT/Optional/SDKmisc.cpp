@@ -34,62 +34,6 @@ INT_PTR CALLBACK DisplaySwitchToREFWarningProc(HWND hDlg, UINT message, WPARAM w
 //--------------------------------------------------------------------------------------
 void WINAPI DXUTDisplaySwitchingToREFWarning( DXUTDeviceVersion ver )
 {
-    if( DXUTGetShowMsgBoxOnError() )
-    {
-        DWORD dwSkipWarning = 0, dwRead = 0, dwWritten = 0;
-        HANDLE hFile = NULL;
-
-        // Read previous user settings
-        WCHAR strPath[MAX_PATH];
-        SHGetFolderPath( DXUTGetHWND(), CSIDL_LOCAL_APPDATA, NULL, SHGFP_TYPE_CURRENT, strPath );
-        StringCchCat( strPath, MAX_PATH, L"\\DXUT\\SkipRefWarning.dat" );
-        if( (hFile = CreateFile( strPath, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, 0, NULL )) != INVALID_HANDLE_VALUE )
-        {
-            ReadFile( hFile, &dwSkipWarning, sizeof(DWORD), &dwRead, NULL );
-            CloseHandle( hFile );
-        }
-
-        if( dwSkipWarning == 0 )
-        {
-            // Compact code to create a custom dialog box without using a template in a resource file.
-            // If this dialog were in a .rc file, this would be a lot simpler but every sample calling this function would
-            // need a copy of the dialog in its own .rc file. Also MessageBox API could be used here instead, but 
-            // the MessageBox API is simpler to call but it can't provide a "Don't show again" checkbox
-            typedef struct { DLGITEMTEMPLATE a; WORD b; WORD c; WORD d; WORD e; WORD f; } DXUT_DLG_ITEM; 
-            typedef struct { DLGTEMPLATE a; WORD b; WORD c; WCHAR d[2]; WORD e; WCHAR f[16]; DXUT_DLG_ITEM i1; DXUT_DLG_ITEM i2; DXUT_DLG_ITEM i3; DXUT_DLG_ITEM i4; DXUT_DLG_ITEM i5; } DXUT_DLG_DATA; 
-
-            DXUT_DLG_DATA dtp = 
-            {                                                                                                                                                  
-                {WS_CAPTION|WS_POPUP|WS_VISIBLE|WS_SYSMENU|DS_ABSALIGN|DS_3DLOOK|DS_SETFONT|DS_MODALFRAME|DS_CENTER,0,5,0,0,269,82},0,0,L" ",8,L"MS Shell Dlg 2", 
-                {{WS_CHILD|WS_VISIBLE|SS_ICON|SS_CENTERIMAGE,0,7,7,24,24,0x100},0xFFFF,0x0082,0,0,0}, // icon
-                {{WS_CHILD|WS_VISIBLE,0,40,7,230,25,0x101},0xFFFF,0x0082,0,0,0}, // static text
-                {{WS_CHILD|WS_VISIBLE|WS_TABSTOP|BS_DEFPUSHBUTTON,0,80,39,50,14,IDYES},0xFFFF,0x0080,0,0,0}, // Yes button
-                {{WS_CHILD|WS_VISIBLE|WS_TABSTOP,0,133,39,50,14,IDNO},0xFFFF,0x0080,0,0,0}, // No button
-                {{WS_CHILD|WS_VISIBLE|WS_TABSTOP|BS_CHECKBOX,0,7,59,70,16,IDIGNORE},0xFFFF,0x0080,0,0,0}, // checkbox
-            }; 
-
-            int nResult = (int) DialogBoxIndirectParam( DXUTGetHINSTANCE(), (DLGTEMPLATE*)&dtp, DXUTGetHWND(), DisplaySwitchToREFWarningProc, (LPARAM) (ver==DXUT_D3D9_DEVICE) ? 9 : 10 );
-
-            if( (nResult & 0x80) == 0x80 ) // "Don't show again" checkbox was checked
-            {
-                // Save user settings
-                dwSkipWarning = 1;
-                SHGetFolderPath( DXUTGetHWND(), CSIDL_LOCAL_APPDATA, NULL, SHGFP_TYPE_CURRENT, strPath );
-                StringCchCat( strPath, MAX_PATH, L"\\DXUT" );
-                CreateDirectory( strPath, NULL );
-                StringCchCat( strPath, MAX_PATH, L"\\SkipRefWarning.dat" );
-                if( (hFile = CreateFile( strPath, GENERIC_WRITE, 0, NULL, CREATE_ALWAYS, 0, NULL )) != INVALID_HANDLE_VALUE )
-                {
-                    WriteFile( hFile, &dwSkipWarning, sizeof(DWORD), &dwWritten, NULL );
-                    CloseHandle( hFile );
-                }
-            }
-
-            // User choose not to continue
-            if( (nResult & 0x0F) == IDNO )
-                DXUTShutdown(1);
-        }
-    }
 }
 
 
