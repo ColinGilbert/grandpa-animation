@@ -75,9 +75,9 @@
 #include <wchar.h>
 #include <mmsystem.h>
 #include <commctrl.h> // for InitCommonControls() 
-#include <shellapi.h> // for ExtractIcon()
+//#include <shellapi.h> // for ExtractIcon()
 #include <new.h>      // for placement new
-#include <shlobj.h>
+//#include <shlobj.h>
 #include <math.h>      
 #include <limits.h>      
 #include <stdio.h>

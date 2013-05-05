@@ -1334,25 +1334,6 @@ ID3D10Device* WINAPI DXUTCreateRefDevice10( bool bNullRef )
     return pDevice;
 }
 
-//--------------------------------------------------------------------------------------
-// Helper function to launch the Media Center UI after the program terminates
-//--------------------------------------------------------------------------------------
-bool DXUTReLaunchMediaCenter()
-{
-    // Get the path to Media Center
-    WCHAR szExpandedPath[MAX_PATH];
-    if( !ExpandEnvironmentStrings( L"%SystemRoot%\\ehome\\ehshell.exe", szExpandedPath, MAX_PATH) )
-        return false;
-
-    // Skip if ehshell.exe doesn't exist
-    if( GetFileAttributes( szExpandedPath ) == 0xFFFFFFFF )
-        return false;
- 
-    // Launch ehshell.exe 
-    INT_PTR result = (INT_PTR)ShellExecute( NULL, TEXT("open"), szExpandedPath, NULL, NULL, SW_SHOWNORMAL);
-    return (result > 32);
-}
-
 typedef DWORD (WINAPI* LPXINPUTGETSTATE)(DWORD dwUserIndex, XINPUT_STATE* pState );
 typedef DWORD (WINAPI* LPXINPUTSETSTATE)(DWORD dwUserIndex, XINPUT_VIBRATION* pVibration );
 typedef DWORD (WINAPI* LPXINPUTGETCAPABILITIES)( DWORD dwUserIndex, DWORD dwFlags, XINPUT_CAPABILITIES* pCapabilities );

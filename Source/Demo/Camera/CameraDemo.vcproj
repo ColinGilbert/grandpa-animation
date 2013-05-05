@@ -135,7 +135,7 @@
 				InlineFunctionExpansion="0"
 				OmitFramePointers="true"
 				AdditionalIncludeDirectories="..\DXUT\Core;..\DXUT\Optional;..\..\Core;..\..\Performance;..\..\..\Include;..\Common;..\tokamak"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;STRSAFE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_PERFORMANCE"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;STRSAFE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS"
 				StringPooling="true"
 				ExceptionHandling="1"
 				RuntimeLibrary="2"

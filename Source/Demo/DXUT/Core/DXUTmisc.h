@@ -562,9 +562,4 @@ IDirect3DDevice9* WINAPI DXUTCreateRefDevice9( HWND hWnd, bool bNullRef = true )
 //--------------------------------------------------------------------------------------
 ID3D10Device* WINAPI DXUTCreateRefDevice10( bool bNullRef = true );
 
-//--------------------------------------------------------------------------------------
-// Helper function to launch the Media Center UI after the program terminates
-//--------------------------------------------------------------------------------------
-bool DXUTReLaunchMediaCenter();
-
 #endif
