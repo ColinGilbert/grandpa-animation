@@ -1,0 +1,98 @@
+2013/05/11 0.83
+
+    修正bug
+    slimxml改为external
+
+
+2012/08/20
+
+    开源，托管到google code
+    
+
+2011/05/11 version 0.81 released.
+
+    添加通用样条曲线采样器，支持float, Vector2, Vector3, Vector4, Quaternion等数据类型的样条插值
+    完善DemoCamera类，支持左手系或右手系坐标，支持z轴向上或y向上
+    添加摄像机动画演示工程CameraDemo
+    整理完善数学库
+
+2011/03/20 version 0.8 released.
+
+    添加Viewer(模型查看器)工程
+    cpu蒙皮效率提升约35%
+    Vector4现在派生于Vector3，Vector3派生于Vector2
+    支持动画随模型一起加载( 默认为第一次播放时加载）
+    支持attachment模型和主体模型动画同步
+    提高Xml加载效率
+    加入DemoCamera类，替换原来的DXUTCamera
+    IModel接口分解为IPartFunctions，IAnimationFunctions和ILodFunctions
+
+2010/02/19 version 0.7 released.
+
+    IBone和IMesh的getProperty()函数更名为getUserProperty()
+    添加IVertexStream接口，IMesh接口添加IVertexStream* getStaticVertexStream()和IVertexStream* getDynamicVertexStream()函数
+        IMesh接口的getPositions()，getNormals()等函数被废弃
+        对于静态网格，static vertex stream包含所有顶点数据，而dynamic vertex stream为空
+        对于蒙皮网格，static vertex stream包含静态的顶点数据，如纹理坐标，顶点颜色等；而dynamic vertex stream包含动态数据如顶点位置，法线等信息
+        渲染蒙皮网格时，建议也将d3d或ogl的vertex buffer相应分为静态和动态两个stream，静态stream只需要填充一次
+    现在Max导出插件能自动记住最后一次成功导出的设置，并且支持恢复默认设置
+    原先的Material和Texture结构现在改为IMaterial和ITexture接口
+    完善IEventHandler接口，添加了onPartBuilt(),onPartDestroy(),onAnimationStart(),onAnimationEnd(),onAnimationTime()等函数
+        用户可以在onPartBuilt()回调中创建d3d或ogl的buffer，在onPartDestroy()中释放他们，详细请参考DemoCharacter类
+        可以在onAnimationTime()回调中处理任意与动画时间相关的事件，例如音效播放，特效播放，光源的添加/删除，甚至摄像机控制等
+    废除IModel::setEventHandler()函数，改为在调用grp::createModel()函数时直接传入IEventHandler接口指针
+    新添IProperty接口，并且在IModel,IPart和IMaterial接口添加了getUserProperty()函数返回IProperty指针
+        用户可以在gmd,gpt和gmt文件中添加形如<property name=”" value=”"/>的自定义属性节点
+    为了支持GPU蒙皮，添加了ISkin接口，可以调用IMesh::getSkin()返回该接口指针
+        通过ISkin可以得到mesh依赖的所有骨骼的当前变换矩阵，以及mesh每个顶点依赖的骨骼序号和权重
+    支持GPU蒙皮，在设置了IModel::setGpuSkinning(true)之后，通过IMesh::getDynamicVertexStream()得到的将是蒙皮计算之前的原始顶点数据
+        用户可以直接将vertex stream里的buffer发送给显卡进行硬件蒙皮计算
+    Demo添加Gpu Skinning选项
+    IBone和IMesh的getProperty()函数更名为getUserProperty()
+
+    添加IVertexStream接口，IMesh接口添加IVertexStream* getStaticVertexStream()和IVertexStream* getDynamicVertexStream()函数
+        IMesh接口的getPositions()，getNormals()等函数被废弃
+        对于静态网格，static vertex stream包含所有顶点数据，而dynamic vertex stream为空
+        对于蒙皮网格，static vertex stream包含静态的顶点数据，如纹理坐标，顶点颜色等；而dynamic vertex stream包含动态数据如顶点位置，法线等信息
+        渲染蒙皮网格时，建议也将d3d或ogl的vertex buffer相应分为静态和动态两个stream，静态stream只需要填充一次
+    现在Max导出插件能自动记住最后一次成功导出的设置，并且支持恢复默认设置
+    原先的Material和Texture结构现在改为IMaterial和ITexture接口
+    完善IEventHandler接口，添加了onPartBuilt(),onPartDestroy(),onAnimationStart(),onAnimationEnd(),onAnimationTime()等函数
+        用户可以在onPartBuilt()回调中创建d3d或ogl的buffer，在onPartDestroy()中释放他们，详细请参考DemoCharacter类
+        可以在onAnimationTime()回调中处理任意与动画时间相关的事件，例如音效播放，特效播放，光源的添加/删除，甚至摄像机控制等
+    废除IModel::setEventHandler()函数，改为在调用grp::createModel()函数时直接传入IEventHandler接口指针
+    新添IProperty接口，并且在IModel,IPart和IMaterial接口添加了getUserProperty()函数返回IProperty指针
+        用户可以在gmd,gpt和gmt文件中添加形如<property name=”" value=”"/>的自定义属性节点
+    为了支持GPU蒙皮，添加了ISkin接口，可以调用IMesh::getSkin()返回该接口指针
+        通过ISkin可以得到mesh依赖的所有骨骼的当前变换矩阵，以及mesh每个顶点依赖的骨骼序号和权重
+    支持GPU蒙皮，在设置了IModel::setGpuSkinning(true)之后，通过IMesh::getDynamicVertexStream()得到的将是蒙皮计算之前的原始顶点数据
+        用户可以直接将vertex stream里的buffer发送给显卡进行硬件蒙皮计算
+    Demo添加Gpu Skinning选项
+
+2010/01/26 version 0.61 released.
+
+    为了更好的兼容性，Matrix恢复为4×4布局
+    grabResource的param参数将会传递给子资源
+    添加 IMesh::getName()函数
+    Max插件支持导出mesh和bone的用户自定义property
+    添加 IMesh::getProperty()和IBone::getProperty()函数
+
+2010/01/17 version 0.6 released.
+
+    添加IResourceManager接口，用户可以定制资源管理
+    IFileProvider更名为IFileLoader
+    支持资源异步加载
+    添加多线程资源加载Demo
+    大幅提高资源加载速度
+    支持动画分段播放
+    优化矩阵存储，节省内存占用
+    getBoundingBox()函数从IPart移动到IMesh
+    添加grp::createMesh()和grp::destroyMesh()，但是单独创建的mesh暂不支持异步加载
+    gmd,gpt,gmt文件里xml所有节点名称改为小写字母
+    修改了gmd文件格式，skeleton改为model节点的属性，而不是子节点
+
+2009/12/12 version 0.51 released.
+
+    修正bug
+
+2009/9/3 version0.5 First release.
