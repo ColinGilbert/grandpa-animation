@@ -139,7 +139,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="Grandpa2005.lib Performance.lib"
+				AdditionalDependencies="Grandpa2005.lib"
 				OutputFile="$(OutDir)\$(ProjectName)2005.exe"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="..\..\..\Lib"

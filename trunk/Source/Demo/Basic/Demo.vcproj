@@ -136,7 +136,7 @@
 				InlineFunctionExpansion="0"
 				OmitFramePointers="true"
 				AdditionalIncludeDirectories="..\DXUT\Core;..\DXUT\Optional;..\..\Core;..\..\Performance;..\..\..\Include;..\Common;..\tokamak"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;STRSAFE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS;_PERFORMANCE"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;STRSAFE_NO_DEPRECATE;_CRT_SECURE_NO_WARNINGS"
 				StringPooling="true"
 				ExceptionHandling="1"
 				RuntimeLibrary="2"
@@ -159,7 +159,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions="/IGNORE:4089"
-				AdditionalDependencies="dxerr.lib dxguid.lib d3dx9.lib d3d9.lib winmm.lib comctl32.lib Grandpa2005.lib Performance.lib DXUTR.lib DXUTOptR.lib tokamak.lib Common.lib"
+				AdditionalDependencies="dxerr.lib dxguid.lib d3dx9.lib d3d9.lib winmm.lib comctl32.lib Grandpa2005.lib DXUTR.lib DXUTOptR.lib tokamak.lib Common.lib"
 				OutputFile="$(OutDir)\$(ProjectName)2005.exe"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="..\..\..\Lib;..\tokamak"
