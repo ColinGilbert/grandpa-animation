@@ -90,6 +90,10 @@ public:
 
     Matrix transpose(void) const;
 
+	static float invSqrt(float x);
+	void qduDecomposition(Matrix& kQ, Vector3& kD, Vector3& kU) const;
+	void decomposition(Vector3& position, Vector3& scale, Quaternion& orientation) const;
+
 	void buildLookAtLH(const Vector3& eyePos, const Vector3& lookAt, const Vector3& up);
 	void buildLookAtRH(const Vector3& eyePos, const Vector3& lookAt, const Vector3& up);
 
@@ -725,6 +729,82 @@ inline void Matrix:: buildProjectOrthoRH(float width, float height, float nearVa
 	_42 = 0.0f;
 	_43 = nearValue / (nearValue - farValue);
 	_44 = -1.0f;
+}
+
+inline float Matrix::invSqrt(float x)
+{
+	return 1.0f / sqrt(x);
+}
+
+inline void Matrix::qduDecomposition( Matrix& kQ, Vector3& kD, Vector3& kU ) const
+{
+	float fInvLength = invSqrt(M[0][0]*M[0][0] + M[0][1]*M[0][1] + M[0][2]*M[0][2]);
+	kQ.M[0][0] = M[0][0]*fInvLength;
+	kQ.M[0][1] = M[0][1]*fInvLength;
+	kQ.M[0][2] = M[0][2]*fInvLength;
+
+	float fDot = kQ.M[0][0]*M[1][0] + kQ.M[0][1]*M[1][1] + kQ.M[0][2]*M[1][2];
+	kQ.M[1][0] = M[1][0]-fDot*kQ.M[0][0];
+	kQ.M[1][1] = M[1][1]-fDot*kQ.M[0][1];
+	kQ.M[1][2] = M[1][2]-fDot*kQ.M[0][2];
+	fInvLength = invSqrt(kQ.M[1][0]*kQ.M[1][0] + kQ.M[1][1]*kQ.M[1][1] + kQ.M[1][2]*kQ.M[1][2]);
+	kQ.M[1][0] *= fInvLength;
+	kQ.M[1][1] *= fInvLength;
+	kQ.M[1][2] *= fInvLength;
+
+	fDot = kQ.M[0][0]*M[2][0] + kQ.M[0][1]*M[2][1] + kQ.M[0][2]*M[2][2];
+	kQ.M[2][0] = M[2][0]-fDot*kQ.M[0][0];
+	kQ.M[2][1] = M[2][1]-fDot*kQ.M[0][1];
+	kQ.M[2][2] = M[2][2]-fDot*kQ.M[0][2];
+	fDot = kQ.M[1][0]*M[2][0] + kQ.M[1][1]*M[2][1] + kQ.M[1][2]*M[2][2];
+	kQ.M[2][0] -= fDot*kQ.M[1][0];
+	kQ.M[2][1] -= fDot*kQ.M[1][1];
+	kQ.M[2][2] -= fDot*kQ.M[1][2];
+	fInvLength = invSqrt(kQ.M[2][0]*kQ.M[2][0] + kQ.M[2][1]*kQ.M[2][1] + kQ.M[2][2]*kQ.M[2][2]);
+	kQ.M[2][0] *= fInvLength;
+	kQ.M[2][1] *= fInvLength;
+	kQ.M[2][2] *= fInvLength;
+
+	// guarantee that orthogonal matrix has determinant 1 (no reflections)
+	float fDet = kQ.M[0][0]*kQ.M[1][1]*kQ.M[2][2] + kQ.M[1][0]*kQ.M[2][1]*kQ.M[0][2]
+			   + kQ.M[2][0]*kQ.M[0][1]*kQ.M[1][2] - kQ.M[2][0]*kQ.M[1][1]*kQ.M[0][2]
+			   - kQ.M[1][0]*kQ.M[0][1]*kQ.M[2][2] - kQ.M[0][0]*kQ.M[2][1]*kQ.M[1][2];
+	if ( fDet < 0.0 )
+	{
+		for (size_t iRow = 0; iRow < 3; iRow++)
+			for (size_t iCol = 0; iCol < 3; iCol++)
+				kQ.M[iCol][iRow] = -kQ.M[iCol][iRow];
+	}
+
+	// build "right" matrix R
+	Matrix kR;
+	kR.M[0][0] = kQ.M[0][0]*M[0][0] + kQ.M[0][1]*M[0][1] + kQ.M[0][2]*M[0][2];
+	kR.M[1][0] = kQ.M[0][0]*M[1][0] + kQ.M[0][1]*M[1][1] + kQ.M[0][2]*M[1][2];
+	kR.M[1][1] = kQ.M[1][0]*M[1][0] + kQ.M[1][1]*M[1][1] + kQ.M[1][2]*M[1][2];
+	kR.M[2][0] = kQ.M[0][0]*M[2][0] + kQ.M[0][1]*M[2][1] + kQ.M[0][2]*M[2][2];
+	kR.M[2][1] = kQ.M[1][0]*M[2][0] + kQ.M[1][1]*M[2][1] + kQ.M[1][2]*M[2][2];
+	kR.M[2][2] = kQ.M[2][0]*M[2][0] + kQ.M[2][1]*M[2][1] + kQ.M[2][2]*M[2][2];
+
+	// the scaling component
+	kD.X = kR.M[0][0];
+	kD.Y = kR.M[1][1];
+	kD.Z = kR.M[2][2];
+
+	// the shear component
+	float fInvD0 = 1.0f / kD.X;
+	kU.X = kR.M[1][0] * fInvD0;
+	kU.Y = kR.M[2][0] * fInvD0;
+	kU.Z = kR.M[2][1] / kD.Y;
+}
+
+inline void Matrix::decomposition(Vector3& position, Vector3& scale, Quaternion& orientation) const
+{
+	Matrix matQ;
+	Vector3 vecU;
+	qduDecomposition(matQ, scale, vecU); 
+
+	orientation = Quaternion(matQ);
+	position = getTranslation();
 }
 
 }

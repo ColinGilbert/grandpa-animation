@@ -77,6 +77,8 @@ public:
 
 	IProperty* getProperty() const;
 
+	const MAP(STRING, AnimationInfo)& getAnimationInfoMap() const;
+
 private:
 	void readPartInfo(slim::XmlNode* node);
 	void readAnimationInfo(slim::XmlNode* node);

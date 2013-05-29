@@ -176,6 +176,11 @@ IPart* Model::setPart(const Char* slot, const IResource* resource)
 	Part* part = GRP_NEW Part(partResource);
 	m_parts[slot] = part;
 
+	if (m_eventHandler != NULL)
+    {
+        m_eventHandler->onPartSet(this, slot, part);
+    }
+
 	if (partResource->getResourceState() == RES_STATE_COMPLETE)
 	{
 		buildPart(part);
@@ -389,6 +394,46 @@ bool Model::hasAnimation(const Char* slot) const
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
+const Char* Model::getFirstAnimationSlot() const
+{
+    if(!isBuilt())
+    {
+        return NULL;
+    }
+    assert(m_resource);
+    const MAP(STRING, AnimationInfo)& animationInfo = m_resource->getAnimationInfoMap();
+    MAP(STRING, AnimationInfo)::const_iterator it = animationInfo.begin();
+    if( it == animationInfo.end())
+    {
+        return NULL;
+    }
+    return it->first.c_str();
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+const Char* Model::getNextAnimationSlot( const Char* slot ) const
+{
+    if(!isBuilt())
+    {
+        return NULL;
+    }
+    if( !slot )
+    {
+        return NULL;
+    }
+    assert(m_resource);
+    const MAP(STRING, AnimationInfo)& animationInfo = m_resource->getAnimationInfoMap();
+
+    MAP(STRING, AnimationInfo)::const_iterator it = animationInfo.find( slot );
+    ++it;
+    if( it == animationInfo.end())
+    {
+        return NULL;
+    }
+    return it->first.c_str();
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
 IProperty* Model::getProperty() const
 {
 	if (m_resource == NULL)
@@ -404,6 +449,10 @@ void Model::build()
 	PERF_NODE_FUNC();
 
 	setBuilt();
+	if (m_eventHandler != NULL)
+    {
+        m_eventHandler->onModelBuilt(this);
+    }
 
 	assert(m_resource != NULL && m_resource->getResourceState() == RES_STATE_COMPLETE);
 	const SkeletonResource* skeletonRes = m_resource->getSkeletonResource();

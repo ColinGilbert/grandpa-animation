@@ -108,6 +108,8 @@ public:
 
 	virtual void setCallback(ISkeletonCallback* callback) = 0;
 
+	virtual void removeCallback() = 0;
+
 protected:
 	virtual ~ISkeleton(){}
 };

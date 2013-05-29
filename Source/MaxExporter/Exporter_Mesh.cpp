@@ -229,6 +229,10 @@ bool CExporter::exportMesh(const std::wstring& strFilename)
 	for (DWORD i = 0; i < m_meshes.size(); ++i)
 	{
 		grp::MeshExporter* mesh = m_meshes[i];
+		if (mesh == NULL)
+		{
+			continue;
+		}
 		std::wstring strFilePath = strFilename;
 		if (m_meshes.size() > 1)
 		{

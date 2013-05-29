@@ -292,4 +292,10 @@ bool ModelResource::updateCompleteState() const
 	return true;
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
+const MAP(STRING, AnimationInfo)& ModelResource::getAnimationInfoMap() const
+{
+	return m_animationInfo;
+}
+
 }

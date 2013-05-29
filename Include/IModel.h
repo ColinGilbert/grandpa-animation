@@ -53,6 +53,9 @@ public:
 	virtual void stopAllAnimations(float fadeoutTime = 0.3f) = 0;
 	virtual bool isAnimationPlaying(const Char* slot) const = 0;
 	virtual bool hasAnimation(const Char* slot) const = 0;
+
+	virtual const Char* getFirstAnimationSlot() const = 0;
+    virtual const Char* getNextAnimationSlot(const Char* slot) const = 0;
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

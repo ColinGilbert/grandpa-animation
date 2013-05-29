@@ -20,10 +20,14 @@
 
 bool CExporter::ExportPart()
 {
+	assert(m_meshes.size() == m_meshNodes.size());
     for (DWORD i = 0; i < m_meshes.size(); ++i)
     {
         grp::MeshExporter* mesh = m_meshes[i];
-
+		if (mesh == NULL)
+		{
+			continue;
+		}
         slim::XmlDocument xmlDoc;
 
         slim::XmlNode* partNode = xmlDoc.addChild( L"part" );
@@ -42,7 +46,7 @@ bool CExporter::ExportPart()
             {
                 //单一材质
                 slim::XmlNode* materialNode = partNode->addChild( L"material" );
-                materialNode->addAttribute( L"filename", (m_mainFileName + L"_" + mesh->getName() + FILE_EXT_MATERIAL).c_str());
+				materialNode->addAttribute( L"filename", (m_mainFileName + L"_" + mesh->getName() + L"_0" + FILE_EXT_MATERIAL).c_str());
             }
             else
             {

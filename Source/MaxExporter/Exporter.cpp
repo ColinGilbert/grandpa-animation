@@ -71,7 +71,7 @@ CExporter::~CExporter()
 	for (DWORD i = 0; i < m_meshes.size(); ++i)
 	{
 		MeshExporter* mesh = m_meshes[i];
-		assert(mesh != NULL);
+		//assert(mesh != NULL);
 		delete mesh;
 	}
 }

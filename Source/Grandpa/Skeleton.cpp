@@ -190,6 +190,20 @@ void Skeleton::reset()
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
+void Skeleton::resetWithScaleType()
+{
+	PERF_NODE_FUNC();
+
+	for (VECTOR(Bone)::iterator iter = m_bones.begin();
+		  iter != m_bones.end();
+		  ++iter)
+	{
+		Bone& bone = *iter;
+		bone.resetWithScaleType();
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
 void Skeleton::resetLodError()
 {
 	for (VECTOR(Bone)::iterator iter = m_bones.begin();
@@ -266,6 +280,7 @@ void Skeleton::build()
 			bone.m_fileType = Bone::BONE_TYPE_SCALE;
 		}
 	}
+	resetWithScaleType();
 	setBuilt();
 }
 

@@ -58,8 +58,9 @@ bool CExporter::ExportMaterial( const std::wstring& strFilename )
         //如果只有一个材质,那么直接使用material
         if( subMaterialCount == 0 )
         {
-            strFilePath += FILE_EXT_MATERIAL;
-            writeMaterialFile( material, strFilePath );
+			std::wstringstream wss;
+			wss << strFilePath << L"_" << "0" << FILE_EXT_MATERIAL;
+			writeMaterialFile( material, wss.str());
         }
         else
         {

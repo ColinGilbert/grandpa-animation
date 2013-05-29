@@ -54,10 +54,7 @@ void GetTransformFromMatrix3(const Matrix3& mat3,
 {
 	Matrix m44;
 	::MatrixFromMatrix3(m44, mat3);
-	memcpy(&vTranslation, &(m44.getVector3(3)), sizeof(Vector3));
-	vScale = m44.getScale();
-	m44.removeScale();
-	qRotation = m44;
+	m44.decomposition(vTranslation, vScale, qRotation);
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////
