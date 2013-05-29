@@ -59,6 +59,9 @@ public:
 	virtual bool isAnimationPlaying(const Char* slot) const;
 	virtual bool hasAnimation(const Char* slot) const;
 
+	virtual const Char* getFirstAnimationSlot() const;
+	virtual const Char* getNextAnimationSlot(const Char* slot) const;
+
 	virtual void setGlobalSkinning(bool enable);
 	virtual bool isGlobalSkinning() const;
 

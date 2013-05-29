@@ -17,6 +17,12 @@ class IEventHandler
 public:
 	virtual ~IEventHandler(){}
 
+	//model itself has been built
+	virtual void onModelBuilt(IModel* model){}
+
+	//a new part has been set to this model
+	virtual void onPartSet(IModel* model, const Char* slot, IPart* part){}
+
 	//part has been built when this function is called
 	//do not call IModel::setPart nor IModel::removePart nor IModel::removeAllParts within this function
 	virtual void onPartBuilt(IModel* model, const Char* slot, IPart* part){}

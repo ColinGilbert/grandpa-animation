@@ -31,7 +31,10 @@ bool CExporter::ExportModel()
     for (DWORD i = 0; i < m_meshes.size(); ++i)
     {
         grp::MeshExporter* mesh = m_meshes[i];
-
+		if (mesh == NULL)
+		{
+			continue;
+		}
         slim::XmlNode* partNode = modelNode->addChild( L"part" );
         partNode->addAttribute( L"slot", mesh->getName().c_str());
         partNode->addAttribute( L"filename", (m_mainFileName + L"_" + mesh->getName() + FILE_EXT_PART).c_str());

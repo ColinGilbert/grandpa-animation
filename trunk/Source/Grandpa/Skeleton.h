@@ -25,6 +25,7 @@ class Bone : public IBone
 public:
 	enum
 	{
+		BONE_TYPE_NO_SCALE = 0,
 		BONE_TYPE_SCALE = 1
 	};
 
@@ -75,6 +76,7 @@ public:
 
 private:
 	void reset();
+	void resetWithScaleType();
 
 	void lockTransform();
 	
@@ -117,6 +119,8 @@ public:
 
 	virtual void setCallback(ISkeletonCallback* callback);
 
+	virtual void removeCallback();
+
 	virtual IIkSolver* addIkSolver(IBone* sourceBone,
 									const IkBoneData* data,
 									size_t boneCount,
@@ -128,6 +132,7 @@ public:
 	const VECTOR(Bone)& getBones() const;
 
 	void reset();
+	void resetWithScaleType();
 
 	void resetLodError();
 
@@ -159,8 +164,8 @@ private:
 inline Bone::Bone()
 	: m_core(NULL)
 	, m_skeleton(NULL)
-	, m_fileType(0)
-	, m_type(0)
+	, m_fileType(BONE_TYPE_NO_SCALE)
+	, m_type(BONE_TYPE_NO_SCALE)
 	, m_totalWeight(0.0f)
 	, m_totalWeightTemp(0.0f)
 {
@@ -183,7 +188,7 @@ inline void Bone::blendTransform(float weight,
 	{
 		m_positionTemp = position;
 		m_rotationTemp = rotation;
-		m_scaleTemp = m_scale;
+		m_scaleTemp = m_core->scale;
 		m_totalWeightTemp = weight;
 	}
 	else
@@ -313,6 +318,14 @@ inline void Bone::reset()
 {
 	m_totalWeightTemp = 0.0f;
 	m_totalWeight = 0.0f;
+	//m_type = m_fileType;
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+inline void Bone::resetWithScaleType()
+{
+	m_totalWeightTemp = 0.0f;
+	m_totalWeight = 0.0f;
 	m_type = m_fileType;
 }
 
@@ -366,6 +379,12 @@ inline IBone* Skeleton::getBoneByName(const Char* name)
 inline void Skeleton::setCallback(ISkeletonCallback* callback)
 {
 	m_callback = callback;
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+inline void Skeleton::removeCallback()
+{
+    m_callback = NULL;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
