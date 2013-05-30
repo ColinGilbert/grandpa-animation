@@ -111,7 +111,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_dll|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\Performance;..\..\Include;..\SlimXml\SlimXml;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Performance;..\..\Include;..\SlimXml;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_GRP_WIN32_THREAD_SAFE;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;GRANDPA_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -125,7 +125,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ImportLibrary>../../Lib/$(TargetName).lib</ImportLibrary>
       <AdditionalDependencies>SlimXmlD.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\SlimXml\SlimXml\Debug_Unicode</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\SlimXml\Debug_Unicode</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>
@@ -142,7 +142,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <OmitFramePointers>true</OmitFramePointers>
-      <AdditionalIncludeDirectories>..\Performance;..\..\Include;..\SlimXml\SlimXml;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Performance;..\..\Include;..\SlimXml;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_GRP_WIN32_THREAD_SAFE;NDEBUG;_WINDOWS;_USRDLL;_CRT_SECURE_NO_WARNINGS;GRANDPA_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -160,7 +160,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <ImportLibrary>../../Lib/$(TargetName).lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
-      <AdditionalLibraryDirectories>..\SlimXml\SlimXml\Release_Unicode</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\SlimXml\Release_Unicode</AdditionalLibraryDirectories>
       <AdditionalDependencies>SlimXml.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
@@ -178,7 +178,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <OmitFramePointers>true</OmitFramePointers>
-      <AdditionalIncludeDirectories>..\Performance;..\..\Include;..\SlimXml\SlimXml;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Performance;..\..\Include;..\SlimXml;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_GRP_WIN32_THREAD_SAFE;NDEBUG;_WINDOWS;_USRDLL;_CRT_SECURE_NO_WARNINGS;GRANDPA_EXPORTS;_PERFORMANCE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -197,7 +197,7 @@
       <ImportLibrary>../../Lib/$(TargetName).lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
       <AdditionalDependencies>SlimXml.lib;Performance.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\Lib;..\SlimXml\SlimXml\Release_Unicode</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\Lib;..\SlimXml\Release_Unicode</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>
@@ -211,7 +211,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_lib|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\Performance;..\..\Include;..\SlimXml\SlimXml;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Performance;..\..\Include;..\SlimXml;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_GRP_WIN32_THREAD_SAFE;_DEBUG;_LIB;_CRT_SECURE_NO_WARNINGS;GRANDPA_STATICLIB;GRANDPA_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -233,7 +233,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <OmitFramePointers>true</OmitFramePointers>
-      <AdditionalIncludeDirectories>..\Performance;..\..\Include;..\SlimXml\SlimXml;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Performance;..\..\Include;..\SlimXml;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_GRP_WIN32_THREAD_SAFE;NDEBUG;_WINDOWS;_USRDLL;_CRT_SECURE_NO_WARNINGS;GRANDPA_STATICLIB;GRANDPA_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
