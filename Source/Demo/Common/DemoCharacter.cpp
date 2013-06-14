@@ -83,6 +83,10 @@ void DemoCharacter::renderNormal(const D3DXMATRIXA16& mView, const D3DXMATRIXA16
 		part = m_model->getNextPart())
 	{
 		grp::IMesh* mesh = part->getMesh();
+		if (mesh == NULL)
+		{
+			continue;
+		}
 		grp::Matrix meshTransform = mesh->getTransform() * m_model->getTransform();
 		D3DXMATRIXA16 mWorld;
 		memcpy(&mWorld, &meshTransform, sizeof(D3DXMATRIX));
