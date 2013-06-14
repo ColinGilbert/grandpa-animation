@@ -133,6 +133,8 @@ void Ragdoll::createRadDude()
 {
 	std::vector<JointData> jointData(JOINTS_PER_DUDE);
 
+	memset(m_rigidBodies, 0, sizeof(m_rigidBodies));
+
 	for (s32 i = 0; i < BONE_TOTAL; i++)
 	{
 		m_rigidBodies[i] = m_simulator->CreateRigidBody();
@@ -142,6 +144,10 @@ void Ragdoll::createRadDude()
 		neV3 inertiaTensor;
 		
 		grp::IBone* startBone = m_skeleton->getBoneByName(g_bones[i].boneName);
+		if (startBone == NULL)
+		{
+			return;
+		}
 		const grp::Matrix& boneTransform = startBone->getAbsoluteTransform();
 		grp::Vector3 bonePos = boneTransform.getTranslation();
 		grp::Quaternion boneRotation = boneTransform.getRotation();
@@ -275,6 +281,10 @@ void Ragdoll::updateSkeleton()
 	for (int i = 0; i < BONE_TOTAL; ++i)
 	{
 		neRigidBody* body = m_rigidBodies[i];
+		if (body == NULL)
+		{
+			continue;
+		}
 		neV3 pos = body->GetPos();
 		neQ rotation = body->GetRotationQ();
 		body->BeginIterateGeometry();
@@ -287,10 +297,11 @@ void Ragdoll::updateSkeleton()
 
 		grp::Matrix offsetMatrix(grp::Matrix::IDENTITY);
 		offsetMatrix.setTranslation(g_bones[i].offset);
-
-		m_bones[i]->setAbsoluteTransform(offsetMatrix * r);
-
-		m_bones[i]->updateChildren();
+		if (m_bones[i] != NULL)
+		{
+			m_bones[i]->setAbsoluteTransform(offsetMatrix * r);
+			m_bones[i]->updateChildren();
+		}
 	}
 }
 
